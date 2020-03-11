@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error
 
 import matplotlib.pyplot as plt #Librería para gráficas 
 
-df = pd.read_csv('economics.csv', sep=',') 
+df = pd.read_csv('https://raw.githubusercontent.com/HectorMontillo/Machine-Learning-Regressions/master/economics.csv') 
 #print(df.shape)
 print(df.describe())
 
@@ -22,7 +22,7 @@ definitions = {
   'psavert': 'tasa de ahorro personal.',
   'uempmed':'duración media del desempleo, en semanas.'
 }
-
+#Lineal Regression
 x = df[predictors].values
 t = df[target_column].values
 
@@ -33,8 +33,11 @@ lr.fit(x, t)
 
 y = lr.predict(x)
 
+#
+
 plt.scatter(x, t,  color='black')
 plt.plot(x, y, color='red', linewidth=3)
+
 plt.xlabel("{}: {}".format(predictors[0], definitions[predictors[0]]))
 plt.ylabel("{}: {}".format(target_column[0], definitions[target_column[0]]))
 plt.legend(('modelo','muestras'))
